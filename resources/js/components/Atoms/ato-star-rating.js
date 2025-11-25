@@ -1,3 +1,14 @@
+/**
+ * @file ato-star-rating.js
+ * @description Componente de calificación con estrellas.
+ * Permite visualizar y seleccionar una calificación numérica.
+ * @variants
+ *  - value: Valor numérico de la calificación (0-5).
+ *  - readonly: Si está presente, el componente es de solo lectura.
+ *  - size: Tamaño de las estrellas (defecto: 28px).
+ */
+import { globalStyles } from '../styles.js';
+
 export class AppStarRating extends HTMLElement {
   constructor() {
     super();

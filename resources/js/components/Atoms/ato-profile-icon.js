@@ -6,7 +6,7 @@
  *  - img: URL de la imagen de perfil.
  *  - size: Tamaño del componente (defecto: 45px).
  */
-import { globalStyles } from '../../styles.js';
+import { globalStyles } from '../styles.js';
 import user from '../Icons/Foto.svg?raw';
 
 export class AtoProfileIcon extends HTMLElement {
