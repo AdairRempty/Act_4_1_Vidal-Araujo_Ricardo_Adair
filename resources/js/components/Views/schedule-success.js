@@ -2,12 +2,20 @@ import { globalStyles } from '../styles.js';
 import '../Organisms/cards/org-tutor-card.js';
 import '../Organisms/org-bottom-bar.js';
 
+/**
+ * Componente Vista: Éxito de Agenda
+ * Vista que muestra el resultado final del proceso de agendamiento.
+ * Se utiliza para confirmar visualmente que la acción se completó o mostrar errores.
+ */
 export class ViewScheduleSuccess extends HTMLElement {
   constructor() {
     super();
     this.attachShadow({ mode: 'open' });
   }
 
+  /**
+   * Se ejecuta cuando el componente se añade al DOM.
+   */
   connectedCallback() {
     this.render();
   }

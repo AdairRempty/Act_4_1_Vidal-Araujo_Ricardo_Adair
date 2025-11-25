@@ -5,9 +5,11 @@ import '../Organisms/org-calendar-modal.js';
 import '../Organisms/org-toast-notification.js';
 import '../Molecules/mol-popup-box.js';
 
-/* Esta vista contiene toda la logica de programacion para poder manejar el calendario y que este
-sea semi funcional pero con la fecha de la PC ya que aun no se manejar DB aqui.*/
-
+/**
+ * Componente Vista: Calendario de Agenda
+ * Vista que gestiona la selección de fecha y confirmación de la tutoría.
+ * Maneja el estado del calendario, popups de confirmación y notificaciones de error.
+ */
 class ViewScheduleCalendar extends HTMLElement {
   constructor() {
     super();
@@ -21,11 +23,17 @@ class ViewScheduleCalendar extends HTMLElement {
     };
   }
 
+  /**
+   * Se ejecuta cuando el componente se añade al DOM.
+   */
   connectedCallback() {
     this.render();
     this.addEventListeners();
   }
 
+  /**
+   * Añade los escuchadores de eventos necesarios.
+   */
   addEventListeners() {
     const calendarModal = this.shadowRoot.querySelector('org-calendar-modal');
 

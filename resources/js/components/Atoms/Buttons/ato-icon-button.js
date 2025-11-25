@@ -1,21 +1,35 @@
 import { globalStyles } from '../../styles.js';
 import '../ato-icon.js';
 
+/**
+ * Componente Atomo: Botón con Icono
+ * Botón que incluye un icono y una etiqueta, con estilos específicos.
+ */
 export class AppIconButton extends HTMLElement {
   constructor() {
     super();
     this.attachShadow({ mode: 'open' });
   }
 
+  /**
+   * Atributos observados por el componente.
+   * @returns {string[]} Lista de atributos
+   */
   static get observedAttributes() {
     return ['label', 'icon', 'variant', 'disabled'];
   }
 
+  /**
+   * Se ejecuta cuando el componente se añade al DOM.
+   */
   connectedCallback() {
     this.render();
     this.addEventListeners();
   }
 
+  /**
+   * Añade los escuchadores de eventos necesarios.
+   */
   addEventListeners() {
     const button = this.shadowRoot.querySelector('.icon-button');
     if (button && !this.hasAttribute('disabled')) {
@@ -25,6 +39,9 @@ export class AppIconButton extends HTMLElement {
     }
   }
 
+  /**
+   * Renderiza el componente.
+   */
   render() {
     const label = this.getAttribute('label') || 'Button';
     const icon = this.getAttribute('icon') || '';

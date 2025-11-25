@@ -23,26 +23,47 @@ const icons = {
   'error': error
 };
 
+/**
+ * Componente Atomo: Icono
+ * Renderiza iconos SVG basados en el nombre proporcionado.
+ * Soporta personalización de tamaño, color y estado.
+ */
 export class AppIcon extends HTMLElement {
   constructor() {
     super();
     this.attachShadow({ mode: 'open' });
   }
 
+  /**
+   * Atributos observados por el componente.
+   * @returns {string[]} Lista de atributos
+   */
   static get observedAttributes() {
     return ['name', 'size', 'color', 'state', 'with-background'];
   }
 
+  /**
+   * Se ejecuta cuando un atributo observado cambia.
+   * @param {string} name - Nombre del atributo
+   * @param {string} oldValue - Valor anterior
+   * @param {string} newValue - Nuevo valor
+   */
   attributeChangedCallback(name, oldValue, newValue) {
     if (oldValue !== newValue) {
       this.render();
     }
   }
 
+  /**
+   * Se ejecuta cuando el componente se añade al DOM.
+   */
   connectedCallback() {
     this.render();
   }
 
+  /**
+   * Renderiza el componente.
+   */
   render() {
     const name = this.getAttribute('name');
     const size = this.getAttribute('size') || '24px';

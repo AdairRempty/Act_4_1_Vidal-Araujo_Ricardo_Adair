@@ -1,6 +1,10 @@
 import { globalStyles } from '../styles.js';
 import './ato-icon.js';
 
+/**
+ * Componente Atomo: Calificación con Estrellas
+ * Permite mostrar y seleccionar una calificación numérica mediante estrellas.
+ */
 export class AppStarRating extends HTMLElement {
   constructor() {
     super();
@@ -8,10 +12,20 @@ export class AppStarRating extends HTMLElement {
     this._value = 0;
   }
 
+  /**
+   * Atributos observados por el componente.
+   * @returns {string[]} Lista de atributos
+   */
   static get observedAttributes() {
     return ['value', 'readonly', 'size'];
   }
 
+  /**
+   * Se ejecuta cuando un atributo observado cambia.
+   * @param {string} name - Nombre del atributo
+   * @param {string} oldValue - Valor anterior
+   * @param {string} newValue - Nuevo valor
+   */
   attributeChangedCallback(name, oldValue, newValue) {
     if (name === 'value') {
       this._value = parseInt(newValue) || 0;
@@ -21,19 +35,33 @@ export class AppStarRating extends HTMLElement {
     }
   }
 
+  /**
+   * Se ejecuta cuando el componente se añade al DOM.
+   */
   connectedCallback() {
     this._value = parseInt(this.getAttribute('value')) || 0;
     this.render();
   }
 
+  /**
+   * Establece el valor de la calificación.
+   * @param {number} val - Nuevo valor
+   */
   set value(val) {
     this.setAttribute('value', val);
   }
 
+  /**
+   * Obtiene el valor actual de la calificación.
+   * @returns {number} Valor actual
+   */
   get value() {
     return this._value;
   }
 
+  /**
+   * Renderiza el componente.
+   */
   render() {
     const readonly = this.hasAttribute('readonly');
     const size = '28px';

@@ -1,16 +1,27 @@
 import { globalStyles } from '../styles.js';
 import user from '../Icons/Foto.svg?raw';
 
+/**
+ * Componente Atomo: Icono de Perfil
+ * Muestra la imagen del usuario dentro de un contenedor circular (esfera).
+ * Se utiliza principalmente en las tarjetas de tutor y reseñas.
+ */
 export class AtoProfileIcon extends HTMLElement {
   constructor() {
     super();
     this.attachShadow({ mode: 'open' });
   }
 
+  /**
+   * Se ejecuta cuando el componente se añade al DOM.
+   */
   connectedCallback() {
     this.render();
   }
 
+  /**
+   * Renderiza el componente.
+   */
   render() {
     /*Tamaños estandar y estilos generales del atomo*/
     this.shadowRoot.innerHTML = `

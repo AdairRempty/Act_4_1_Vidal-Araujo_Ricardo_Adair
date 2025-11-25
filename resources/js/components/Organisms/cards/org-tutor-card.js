@@ -3,23 +3,37 @@ import '../../Atoms/ato-star-rating.js';
 import '../../Atoms/ato-icon.js';
 import '../../Atoms/ato-profile-icon.js';
 
+/**
+ * Componente Organismo: Tarjeta de Tutor
+ * Muestra la información de un tutor, incluyendo nombre, materia, calificación y detalles.
+ * Permite seleccionar al tutor al hacer clic.
+ */
 export class OrgTutorCard extends HTMLElement {
   constructor() {
     super();
     this.attachShadow({ mode: 'open' });
   }
 
+  /**
+   * Se ejecuta cuando el componente se añade al DOM.
+   */
   connectedCallback() {
     this.render();
     this.addEventListeners();
   }
 
+  /**
+   * Añade los escuchadores de eventos necesarios.
+   */
   addEventListeners() {
     this.shadowRoot.querySelector('.card').addEventListener('click', () => {
       this.dispatchEvent(new CustomEvent('tutor-selected', { bubbles: true, composed: true }));
     });
   }
 
+  /**
+   * Renderiza el componente.
+   */
   render() {
     this.shadowRoot.innerHTML = `
       <style>

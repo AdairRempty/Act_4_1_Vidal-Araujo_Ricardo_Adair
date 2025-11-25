@@ -1,16 +1,27 @@
 import { globalStyles } from '../styles.js';
 import '../Atoms/ato-icon.js';
 
+/**
+ * Componente Organismo: Barra Inferior
+ * Barra de navegación fija en la parte inferior de la pantalla.
+ * Contiene el icono de inicio para volver a la pantalla principal.
+ */
 export class OrgBottomBar extends HTMLElement {
   constructor() {
     super();
     this.attachShadow({ mode: 'open' });
   }
 
+  /**
+   * Se ejecuta cuando el componente se añade al DOM.
+   */
   connectedCallback() {
     this.render();
   }
 
+  /**
+   * Renderiza el componente.
+   */
   render() {
     /*Parametros del organismo*/
     this.shadowRoot.innerHTML = `

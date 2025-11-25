@@ -2,6 +2,11 @@ import { globalStyles } from '../styles.js';
 import '../Atoms/Buttons/ato-button.js';
 import '../Atoms/Buttons/ato-day-button.js';
 
+/**
+ * Componente Organismo: Modal de Calendario
+ * Muestra un calendario interactivo para seleccionar una fecha.
+ * Permite navegar entre días y seleccionar una fecha para agendar una tutoría.
+ */
 export class OrgCalendarModal extends HTMLElement {
   constructor() {
     super();
@@ -13,31 +18,56 @@ export class OrgCalendarModal extends HTMLElement {
     };
   }
 
+  /**
+   * Se ejecuta cuando el componente se añade al DOM.
+   */
   connectedCallback() {
     this.render();
   }
 
+  /**
+   * Obtiene el número de días en un mes específico.
+   * @param {Date} date - Fecha del mes
+   * @returns {number} Número de días
+   */
   getDaysInMonth(date) {
     const year = date.getFullYear();
     const month = date.getMonth();
     return new Date(year, month + 1, 0).getDate();
   }
 
+  /**
+   * Obtiene el nombre del mes en español.
+   * @param {Date} date - Fecha del mes
+   * @returns {string} Nombre del mes
+   */
   getMonthName(date) {
     return date.toLocaleString('es-ES', { month: 'long' });
   }
 
+  /**
+   * Obtiene el índice del primer día del mes (0-6).
+   * @param {Date} date - Fecha del mes
+   * @returns {number} Índice del día
+   */
   getFirstDayOfMonth(date) {
     const year = date.getFullYear();
     const month = date.getMonth();
     return new Date(year, month, 1).getDay();
   }
 
+  /**
+   * Maneja el clic en un día del calendario.
+   * @param {number} day - Día seleccionado
+   */
   handleDayClick(day) {
     this.state.selectedDay = day;
     this.render();
   }
 
+  /**
+   * Renderiza el componente.
+   */
   render() {
     const { currentDate, selectedDay } = this.state;
     const daysInMonth = this.getDaysInMonth(currentDate);

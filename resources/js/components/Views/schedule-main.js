@@ -6,21 +6,36 @@ import '../Atoms/Buttons/ato-icon-button.js';
 import '../Organisms/org-toast-notification.js';
 import '../Organisms/cards/org-review-card.js';
 
+/**
+ * Componente Vista: Pantalla Principal de Agenda
+ * Vista principal que muestra la información del tutor, reseñas y permite iniciar el proceso de agendamiento.
+ * Coordina la interacción entre los diferentes organismos y átomos.
+ */
 class ViewScheduleMain extends HTMLElement {
   constructor() {
     super();
     this.attachShadow({ mode: 'open' });
   }
 
+  /**
+   * Atributos observados por el componente.
+   * @returns {string[]} Lista de atributos
+   */
   static get observedAttributes() {
     return ['show-success'];
   }
 
+  /**
+   * Se ejecuta cuando el componente se añade al DOM.
+   */
   connectedCallback() {
     this.render();
     this.addEventListeners();
   }
 
+  /**
+   * Añade los escuchadores de eventos necesarios.
+   */
   addEventListeners() {
     const agendarBtn = this.shadowRoot.querySelector('#agendar-btn');
     agendarBtn.addEventListener('click', () => {

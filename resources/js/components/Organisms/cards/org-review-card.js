@@ -3,16 +3,26 @@ import '../../Atoms/ato-star-rating.js';
 import '../../Atoms/ato-icon.js';
 import '../../Atoms/ato-profile-icon.js';
 
+/**
+ * Componente Organismo: Tarjeta de Reseña
+ * Muestra una reseña de usuario, incluyendo el autor, texto y calificación.
+ */
 export class OrgReviewCard extends HTMLElement {
   constructor() {
     super();
     this.attachShadow({ mode: 'open' });
   }
 
+  /**
+   * Se ejecuta cuando el componente se añade al DOM.
+   */
   connectedCallback() {
     this.render();
   }
 
+  /**
+   * Renderiza el componente.
+   */
   render() {
     this.shadowRoot.innerHTML = `
       <style>

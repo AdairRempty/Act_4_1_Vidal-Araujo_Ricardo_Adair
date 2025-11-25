@@ -1,20 +1,34 @@
 import { globalStyles, fontImport } from '../../styles.js';
 import '../ato-icon.js';
 
+/**
+ * Componente Atomo: Botón
+ * Botón estándar con soporte para variantes, iconos y estados.
+ */
 export class AppButton extends HTMLElement {
   constructor() {
     super();
     this.attachShadow({ mode: 'open' });
   }
 
+  /**
+   * Atributos observados por el componente.
+   * @returns {string[]} Lista de atributos
+   */
   static get observedAttributes() {
     return ['variant', 'disabled', 'icon', 'label', 'icon-position'];
   }
 
+  /**
+   * Se ejecuta cuando el componente se añade al DOM.
+   */
   connectedCallback() {
     this.render();
   }
 
+  /**
+   * Renderiza el componente.
+   */
   render() {
     const variant = this.getAttribute('variant') || 'primary';
     const disabled = this.hasAttribute('disabled');

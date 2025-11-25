@@ -2,20 +2,35 @@ import { globalStyles } from '../styles.js';
 import '../Atoms/Buttons/ato-button-medium.js';
 import '../Atoms/ato-icon.js';
 
+/**
+ * Componente Molécula: Cuadro Emergente (Popup)
+ * Muestra un mensaje modal con un título, descripción y un botón de acción.
+ * Soporta estados de éxito y error.
+ */
 export class MolPopupBox extends HTMLElement {
   constructor() {
     super();
     this.attachShadow({ mode: 'open' });
   }
 
+  /**
+   * Atributos observados por el componente.
+   * @returns {string[]} Lista de atributos
+   */
   static get observedAttributes() {
     return ['state', 'title', 'message', 'button-text'];
   }
 
+  /**
+   * Se ejecuta cuando el componente se añade al DOM.
+   */
   connectedCallback() {
     this.render();
   }
 
+  /**
+   * Se ejecuta cuando un atributo observado cambia.
+   */
   attributeChangedCallback() {
     this.render();
   }
@@ -31,11 +46,13 @@ export class MolPopupBox extends HTMLElement {
     const stateConfig = {
       success: {
         icon: 'check',
-        label: 'Éxito'
+        label: 'Éxito',
+        color: 'var(--color-success)'
       },
       error: {
         icon: 'error',
-        label: 'Error'
+        label: 'Error',
+        color: 'var(--color-error)'
       }
     };
 

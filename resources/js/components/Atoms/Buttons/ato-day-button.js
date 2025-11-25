@@ -1,24 +1,45 @@
 import { globalStyles } from '../../styles.js';
 
+/**
+ * Componente Atomo: Botón de Día
+ * Botón utilizado en calendarios para representar un día.
+ * Soporta estados como disponible, seleccionado, hoy, etc.
+ */
 export class AppDayButton extends HTMLElement {
   constructor() {
     super();
     this.attachShadow({ mode: 'open' });
   }
 
+  /**
+   * Atributos observados por el componente.
+   * @returns {string[]} Lista de atributos
+   */
   static get observedAttributes() {
     return ['day', 'state'];
   }
 
+  /**
+   * Se ejecuta cuando un atributo observado cambia.
+   * @param {string} name - Nombre del atributo
+   * @param {string} oldValue - Valor anterior
+   * @param {string} newValue - Nuevo valor
+   */
   attributeChangedCallback(name, oldValue, newValue) {
     this.render();
   }
 
+  /**
+   * Se ejecuta cuando el componente se añade al DOM.
+   */
   connectedCallback() {
     this.render();
     this.addEventListeners();
   }
 
+  /**
+   * Añade los escuchadores de eventos necesarios.
+   */
   addEventListeners() {
     const state = this.getAttribute('state') || 'available';
     if (state !== 'disabled') {
@@ -32,6 +53,9 @@ export class AppDayButton extends HTMLElement {
     }
   }
 
+  /**
+   * Renderiza el componente.
+   */
   render() {
     const day = this.getAttribute('day') || '';
     const state = this.getAttribute('state') || 'available';
